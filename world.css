@@ -1,1 +1,30 @@
 /* Add your own styles */
+
+#result table{
+    width: 100%;
+    margin-top: 2rem;
+}   
+
+#result table th{
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+}
+
+main{
+    margin: auto;
+    width: fit-content;
+}
+
+button,input{
+    padding: 10px;
+}
+
+button{
+    background-color: rgb(74, 197, 74);
+    cursor: pointer;
+    border-radius: 5px;
+    border-color: rgb(74, 197, 74);;
+}

@@ -1,18 +1,20 @@
 window.onload = () => {
-  const lookupButton = document.querySelector("#lookup");
+  const lookupCountryButton = document.querySelector("#lookup");
+  const lookupCitiesButton = document.querySelector("#lookup_cities");
 
-
-  lookupButton.addEventListener("click", () => {
+  const handleClick = (lookup) => {
     let inputVal = document.querySelector("#country").value;
-   
+
+    
+
     inputVal = inputVal.trim();
-    //console.log(inputVal);
+   
 
     const displayResult = () => {
       if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
           let response = httpRequest.responseText;
-          //alert(response);
+          
           document.querySelector("div#result").innerHTML = "";
           document.querySelector("div#result").innerHTML = response;
         } else {
@@ -22,9 +24,13 @@ window.onload = () => {
     };
 
     const httpRequest = new XMLHttpRequest();
-    let url = `./world.php?country=${inputVal}`;
+    let url = `./world.php?country=${inputVal}&lookup=${lookup}`;
     httpRequest.onreadystatechange = displayResult;
     httpRequest.open("GET", url);
     httpRequest.send();
-  });
+    
+  };
+
+  lookupCitiesButton.addEventListener("click", ()=>handleClick('cities'));
+  lookupCountryButton.addEventListener("click", ()=>handleClick('countries'));
 };
